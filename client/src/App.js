@@ -1,5 +1,6 @@
 import React, { Lazy, suspense } from "react";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 // components
 import FeedbackList from "./components/FeedbackList";
 import FeedbackStats from "./components/FeedbackStats";
@@ -22,6 +23,11 @@ import FeedbackData from "./utils/FeedbackData";
 function App() {
   const [feedback, setFeedback] = useState(FeedbackData);
 
+  const addFeedback = (newFeedback) => {
+    newFeedback.id = uuidv4();
+    setFeedback([newFeedback, ...feedback]);
+  };
+
   const deleteFeedback = (id) => {
     if (window.confirm("Confirm delete?")) {
       setFeedback(feedback.filter((item) => item.id !== id));
@@ -32,7 +38,7 @@ function App() {
     <Provider store={store}>
       <Header />
       <div className="container">
-        <FeedbackForm />
+        <FeedbackForm handleAdd={addFeedback} />
         <FeedbackStats feedback={feedback} />
         <FeedbackList handleDelete={deleteFeedback} feedback={feedback} />
       </div>
