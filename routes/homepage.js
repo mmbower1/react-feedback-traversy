@@ -1,5 +1,5 @@
 // express
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 // middleware
 // const auth = require('../middleware/auth');
@@ -14,11 +14,11 @@ const router = express.Router();
 // @route    GET /homepage
 // @desc     Landing page
 // @access   Public
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    res.json('homepage');
+    res.json("homepage");
   } catch (err) {
-    res.status(500).send(err + ' Server error homepage');
+    res.status(500).send(err + " Server error homepage");
   }
 });
 

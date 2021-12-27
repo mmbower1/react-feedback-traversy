@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaTimes } from "react-icons/fa";
 import PropTypes from "prop-types";
 // components
+import Button from "./shared/Button";
 import Card from "./shared/Card";
 
 function FeedbackItem({ handleDelete, item }) {
@@ -12,13 +13,17 @@ function FeedbackItem({ handleDelete, item }) {
         <FaTimes color="purple" />
       </button>
       <div className="text-display">{item.text}</div>
-      <button onClick={handleDelete}>Send It</button>
+      <Button onClick={handleDelete}>Send It</Button>
     </Card>
   );
 }
 
 FeedbackItem.propTypes = {
   item: PropTypes.object.isRequired,
+};
+
+Button.defaultProps = {
+  version: "secondary",
 };
 
 export default FeedbackItem;
