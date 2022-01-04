@@ -6,12 +6,12 @@ export const FeedbackProvider = ({ children }) => {
   const [feedback, setFeedback] = useState([
     {
       id: 1,
-      text: "This item is from context",
+      text: "This item is from context. I love Bitcoin",
       rating: 10,
     },
     {
       id: 2,
-      text: "This is another test from context",
+      text: "This is another test from context. Ilove Ethereum",
       rating: 7,
     },
   ]);
@@ -32,6 +32,14 @@ export const FeedbackProvider = ({ children }) => {
     });
   };
 
+  const updateFeedback = (id, updatedItem) => {
+    setFeedback(
+      feedback.map((item) =>
+        item.id === id ? { ...item, ...updatedItem } : item
+      )
+    );
+  };
+
   const deleteFeedback = (id) => {
     if (window.confirm("Confirm delete?")) {
       setFeedback(feedback.filter((item) => item.id !== id));
@@ -44,6 +52,7 @@ export const FeedbackProvider = ({ children }) => {
         addFeedback,
         editFeedback,
         deleteFeedback,
+        updateFeedback,
         feedback,
         feedbackEdit,
       }}
