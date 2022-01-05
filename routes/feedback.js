@@ -16,9 +16,9 @@ const router = express.Router();
 // @access   Public
 router.get("/", async (req, res) => {
   try {
-    res.json("about");
+    res.json("feedback");
   } catch (err) {
-    res.status(500).send(err + " Server error about");
+    res.status(500).send(err + " Server error feedback");
   }
 });
 
